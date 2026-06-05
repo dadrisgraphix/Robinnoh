@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Portfolio | Robinson Studio</title>
+
+<meta name="description" content="View our photography, graphic design, video editing and creative portfolio.">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--blue:#041F73;
+--light-blue:#6F83C5;
+--yellow:#F4BE00;
+--white:#f5f5f5;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+overflow-x:hidden;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+/* HEADER */
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:rgba(4,31,115,.95);
+z-index:1000;
+}
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 8%;
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+color:white;
+}
+
+.logo span{
+color:var(--yellow);
+}
+
+.nav-links{
+display:flex;
+gap:30px;
+}
+
+.nav-links a{
+text-decoration:none;
+color:white;
+font-weight:500;
+}
+
+.nav-links a:hover{
+color:var(--yellow);
+}
+
+.menu-btn{
+display:none;
+font-size:28px;
+color:white;
+cursor:pointer;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+position:fixed;
+right:-300px;
+top:0;
+width:280px;
+height:100%;
+background:var(--blue);
+padding:80px 30px;
+transition:.4s;
+z-index:2000;
+}
+
+.sidebar.active{
+right:0;
+}
+
+.sidebar a{
+display:block;
+margin:20px 0;
+color:white;
+text-decoration:none;
+}
+
+.close-btn{
+position:absolute;
+right:20px;
+top:20px;
+font-size:28px;
+color:white;
+cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+height:60vh;
+background:url('images/about.png') center/cover;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+}
+
+.hero::before{
+content:'';
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.65);
+}
+
+.hero-content{
+position:relative;
+color:white;
+text-align:center;
+}
+
+.hero-content h1{
+font-size:50px;
+}
+
+/* SECTION */
+
+section{
+padding:90px 8%;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:40px;
+}
+
+.section-title h2{
+font-size:40px;
+color:var(--blue);
+}
+
+/* FILTERS */
+
+.filters{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:15px;
+margin-bottom:40px;
+}
+
+.filter-btn{
+border:none;
+padding:12px 25px;
+background:#eee;
+cursor:pointer;
+border-radius:50px;
+font-weight:600;
+transition:.3s;
+}
+
+.filter-btn.active,
+.filter-btn:hover{
+background:var(--yellow);
+color:var(--blue);
+}
+
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+}
+
+.gallery-item{
+position:relative;
+overflow:hidden;
+border-radius:15px;
+cursor:pointer;
+}
+
+.gallery-item img{
+width:100%;
+height:280px;
+object-fit:cover;
+display:block;
+transition:.5s;
+}
+
+.gallery-item:hover img{
+transform:scale(1.1);
+}
+
+.overlay{
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+background:rgba(4,31,115,.85);
+color:white;
+padding:15px;
+transform:translateY(100%);
+transition:.4s;
+}
+
+.gallery-item:hover .overlay{
+transform:translateY(0);
+}
+
+/* LIGHTBOX */
+
+.lightbox{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.95);
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.lightbox img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+}
+
+.lightbox span{
+position:absolute;
+top:20px;
+right:30px;
+font-size:40px;
+color:white;
+cursor:pointer;
+}
+
+/* CTA */
+
+.cta{
+background:var(--blue);
+color:white;
+text-align:center;
+border-radius:20px;
+}
+
+.btn{
+display:inline-block;
+margin-top:20px;
+padding:14px 30px;
+background:var(--yellow);
+color:var(--blue);
+text-decoration:none;
+font-weight:600;
+border-radius:50px;
+}
+
+/* FOOTER */
+
+footer{
+background:#02134a;
+color:white;
+text-align:center;
+padding:50px 8%;
+}
+
+.socials{
+margin:20px 0;
+}
+
+.socials a{
+color:white;
+font-size:22px;
+margin:0 10px;
+}
+
+/* FLOATING BUTTONS */
+
+.whatsapp{
+position:fixed;
+right:20px;
+bottom:90px;
+width:60px;
+height:60px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:28px;
+text-decoration:none;
+z-index:999;
+}
+
+.call{
+position:fixed;
+right:20px;
+bottom:20px;
+width:60px;
+height:60px;
+background:var(--blue);
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:24px;
+text-decoration:none;
+z-index:999;
+}
+
+@media(max-width:768px){
+
+.nav-links{
+display:none;
+}
+
+.menu-btn{
+display:block;
+}
+
+.hero-content h1{
+font-size:35px;
+}
+}
+
+</style>
+</head>
+<body>
+
+<header>
+
+<div class="navbar">
+
+<div class="logo">
+Robinson <span>Studio</span>
+</div>
+
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="services.html">Services</a>
+<a href="portfolio.html">Portfolio</a>
+<a href="contact.html">Contact</a>
+</div>
+
+<div class="menu-btn" onclick="openMenu()">
+<i class="fas fa-bars"></i>
+</div>
+
+</div>
+
+</header>
+
+<div class="sidebar" id="sidebar">
+
+<div class="close-btn" onclick="closeMenu()">
+<i class="fas fa-times"></i>
+</div>
+
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="services.html">Services</a>
+<a href="portfolio.html">Portfolio</a>
+<a href="contact.html">Contact</a>
+
+</div>
+
+<section class="hero">
+
+<div class="hero-content">
+<h1>Our Portfolio</h1>
+<p>Capturing Stories. Creating Impact.</p>
+</div>
+
+</section>
+
+<section>
+
+<div class="section-title">
+<h2>Featured Work</h2>
+</div>
+
+<div class="filters">
+
+<button class="filter-btn active" data-filter="all">All</button>
+
+<button class="filter-btn" data-filter="wedding">Weddings</button>
+
+<button class="filter-btn" data-filter="event">Events</button>
+
+<button class="filter-btn" data-filter="portrait">Portraits</button>
+
+<button class="filter-btn" data-filter="graphic">Graphics</button>
+
+</div>
+
+<div class="gallery">
+
+<div class="gallery-item wedding">
+<img src="images/wedding1.jpg" alt="">
+<div class="overlay">Wedding Photography</div>
+</div>
+
+<div class="gallery-item wedding">
+<img src="images/wedding2.jpg" alt="">
+<div class="overlay">Wedding Moments</div>
+</div>
+
+<div class="gallery-item event">
+<img src="images/event1.jpg" alt="">
+<div class="overlay">Corporate Event</div>
+</div>
+
+<div class="gallery-item event">
+<img src="images/event2.jpg" alt="">
+<div class="overlay">Conference Coverage</div>
+</div>
+
+<div class="gallery-item portrait">
+<img src="images/portrait1.jpg" alt="">
+<div class="overlay">Portrait Session</div>
+</div>
+
+<div class="gallery-item portrait">
+<img src="images/portrait2.jpg" alt="">
+<div class="overlay">Studio Portrait</div>
+</div>
+
+<div class="gallery-item graphic">
+<img src="images/graphic1.jpg" alt="">
+<div class="overlay">Brand Design</div>
+</div>
+
+<div class="gallery-item graphic">
+<img src="images/graphic2.jpg" alt="">
+<div class="overlay">Marketing Design</div>
+</div>
+
+</div>
+
+</section>
+
+<section class="cta">
+
+<h2>Like What You See?</h2>
+
+<p>
+Let's create something amazing together.
+</p>
+
+<a href="contact.html" class="btn">
+Request a Quote
+</a>
+
+</section>
+
+<footer>
+
+<h2>Robinson Studio</h2>
+
+<p>Bringing Your Vision to Life.</p>
+
+<div class="socials">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-tiktok"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
+</div>
+
+<p>Nairobi, Kenya | Serving Clients Nationwide</p>
+
+<br>
+
+<p>0115765929 | robbinoh123@gmail.com</p>
+
+</footer>
+
+<a href="https://wa.me/254115765929" class="whatsapp">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+<a href="tel:0115765929" class="call">
+<i class="fas fa-phone"></i>
+</a>
+
+<div class="lightbox" id="lightbox">
+<span onclick="closeLightbox()">&times;</span>
+<img id="lightbox-img">
+</div>
+
+<script>
+
+function openMenu(){
+document.getElementById('sidebar').classList.add('active');
+}
+
+function closeMenu(){
+document.getElementById('sidebar').classList.remove('active');
+}
+
+/* FILTER */
+
+const filterBtns=document.querySelectorAll('.filter-btn');
+const items=document.querySelectorAll('.gallery-item');
+
+filterBtns.forEach(btn=>{
+
+btn.addEventListener('click',()=>{
+
+filterBtns.forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+
+const filter=btn.dataset.filter;
+
+items.forEach(item=>{
+
+if(filter==='all' || item.classList.contains(filter)){
+item.style.display='block';
+}
+else{
+item.style.display='none';
+}
+
+});
+
+});
+
+});
+
+/* LIGHTBOX */
+
+const galleryImages=document.querySelectorAll('.gallery-item img');
+
+galleryImages.forEach(img=>{
+
+img.addEventListener('click',()=>{
+
+document.getElementById('lightbox').style.display='flex';
+
+document.getElementById('lightbox-img').src=img.src;
+
+});
+
+});
+
+function closeLightbox(){
+
+document.getElementById('lightbox').style.display='none';
+
+}
+
+</script>
+
+</body>
+</html>

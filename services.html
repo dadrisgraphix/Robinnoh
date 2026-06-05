@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Services | Robinson Studio</title>
+
+<meta name="description" content="Professional Photography, Graphic Design, Video Editing and Live Streaming services in Kenya.">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--blue:#041F73;
+--light-blue:#6F83C5;
+--yellow:#F4BE00;
+--white:#f5f5f5;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+overflow-x:hidden;
+}
+
+/* HEADER */
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:rgba(4,31,115,.95);
+z-index:1000;
+}
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 8%;
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+color:white;
+}
+
+.logo span{
+color:var(--yellow);
+}
+
+.nav-links{
+display:flex;
+gap:30px;
+}
+
+.nav-links a{
+text-decoration:none;
+color:white;
+font-weight:500;
+}
+
+.nav-links a:hover{
+color:var(--yellow);
+}
+
+.menu-btn{
+display:none;
+font-size:28px;
+color:white;
+cursor:pointer;
+}
+
+.sidebar{
+position:fixed;
+top:0;
+right:-300px;
+width:280px;
+height:100%;
+background:var(--blue);
+padding:80px 30px;
+transition:.4s;
+z-index:2000;
+}
+
+.sidebar.active{
+right:0;
+}
+
+.sidebar a{
+display:block;
+margin:20px 0;
+color:white;
+text-decoration:none;
+}
+
+.close-btn{
+position:absolute;
+right:20px;
+top:20px;
+font-size:28px;
+color:white;
+cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+height:60vh;
+background:url('images/about.png') center/cover;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+}
+
+.hero::before{
+content:'';
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.65);
+}
+
+.hero-content{
+position:relative;
+color:white;
+text-align:center;
+}
+
+.hero-content h1{
+font-size:50px;
+}
+
+/* SECTIONS */
+
+section{
+padding:90px 8%;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:50px;
+}
+
+.section-title h2{
+font-size:40px;
+color:var(--blue);
+}
+
+/* SERVICE CARDS */
+
+.service-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+transition:.4s;
+text-align:center;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card i{
+font-size:45px;
+color:var(--yellow);
+margin-bottom:15px;
+}
+
+.card h3{
+color:var(--blue);
+margin-bottom:15px;
+}
+
+.btn{
+display:inline-block;
+padding:12px 25px;
+background:var(--yellow);
+color:var(--blue);
+text-decoration:none;
+font-weight:600;
+border-radius:50px;
+margin-top:15px;
+transition:.3s;
+}
+
+.btn:hover{
+background:var(--blue);
+color:white;
+}
+
+/* DETAILS */
+
+.detail{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+margin-bottom:70px;
+}
+
+.detail img{
+width:100%;
+border-radius:15px;
+}
+
+.detail h3{
+font-size:32px;
+color:var(--blue);
+margin-bottom:15px;
+}
+
+/* PROCESS */
+
+.process-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+.process{
+background:var(--blue);
+color:white;
+padding:30px;
+border-radius:15px;
+text-align:center;
+}
+
+.process h2{
+color:var(--yellow);
+margin-bottom:15px;
+}
+
+/* FAQ */
+
+.faq-item{
+background:#f5f5f5;
+margin-bottom:15px;
+padding:20px;
+border-radius:10px;
+}
+
+.faq-item h4{
+color:var(--blue);
+margin-bottom:10px;
+}
+
+/* CTA */
+
+.cta{
+background:var(--blue);
+color:white;
+text-align:center;
+border-radius:20px;
+}
+
+.cta h2{
+font-size:40px;
+margin-bottom:15px;
+}
+
+/* FOOTER */
+
+footer{
+background:#02134a;
+color:white;
+text-align:center;
+padding:50px 8%;
+}
+
+.socials{
+margin:20px 0;
+}
+
+.socials a{
+color:white;
+font-size:22px;
+margin:0 10px;
+}
+
+/* FLOATING BUTTONS */
+
+.whatsapp{
+position:fixed;
+right:20px;
+bottom:90px;
+width:60px;
+height:60px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:28px;
+text-decoration:none;
+}
+
+.call{
+position:fixed;
+right:20px;
+bottom:20px;
+width:60px;
+height:60px;
+background:var(--blue);
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:24px;
+text-decoration:none;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.nav-links{
+display:none;
+}
+
+.menu-btn{
+display:block;
+}
+
+.detail{
+grid-template-columns:1fr;
+}
+
+.hero-content h1{
+font-size:35px;
+}
+}
+
+</style>
+</head>
+<body>
+
+<header>
+<div class="navbar">
+
+<div class="logo">Robinson <span>Studio</span></div>
+
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="services.html">Services</a>
+<a href="portfolio.html">Portfolio</a>
+<a href="contact.html">Contact</a>
+</div>
+
+<div class="menu-btn" onclick="openMenu()">
+<i class="fas fa-bars"></i>
+</div>
+
+</div>
+</header>
+
+<div class="sidebar" id="sidebar">
+
+<div class="close-btn" onclick="closeMenu()">
+<i class="fas fa-times"></i>
+</div>
+
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="services.html">Services</a>
+<a href="portfolio.html">Portfolio</a>
+<a href="contact.html">Contact</a>
+
+</div>
+
+<section class="hero">
+
+<div class="hero-content">
+<h1>Our Services</h1>
+<p>Creative Solutions Tailored To Your Needs</p>
+</div>
+
+</section>
+
+<section>
+
+<div class="section-title">
+<h2>What We Do</h2>
+</div>
+
+<div class="service-grid">
+
+<div class="card">
+<i class="fas fa-camera"></i>
+<h3>Photography</h3>
+<p>Professional wedding, event, portrait and commercial photography.</p>
+<a href="contact.html" class="btn">Get Quote</a>
+</div>
+
+<div class="card">
+<i class="fas fa-palette"></i>
+<h3>Graphic Design</h3>
+<p>Creative branding, posters, flyers and marketing materials.</p>
+<a href="contact.html" class="btn">Get Quote</a>
+</div>
+
+<div class="card">
+<i class="fas fa-video"></i>
+<h3>Video Editing</h3>
+<p>Professional editing for events, businesses and content creators.</p>
+<a href="contact.html" class="btn">Get Quote</a>
+</div>
+
+<div class="card">
+<i class="fas fa-broadcast-tower"></i>
+<h3>Live Streaming</h3>
+<p>High-quality streaming for conferences, weddings and events.</p>
+<a href="contact.html" class="btn">Get Quote</a>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="section-title">
+<h2>How We Work</h2>
+</div>
+
+<div class="process-grid">
+
+<div class="process">
+<h2>01</h2>
+<h3>Consultation</h3>
+<p>We discuss your needs and goals.</p>
+</div>
+
+<div class="process">
+<h2>02</h2>
+<h3>Planning</h3>
+<p>We prepare a creative solution for your project.</p>
+</div>
+
+<div class="process">
+<h2>03</h2>
+<h3>Production</h3>
+<p>Photography, design or video production begins.</p>
+</div>
+
+<div class="process">
+<h2>04</h2>
+<h3>Delivery</h3>
+<p>Final files delivered professionally and on time.</p>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="section-title">
+<h2>Frequently Asked Questions</h2>
+</div>
+
+<div class="faq-item">
+<h4>Do you travel outside Nairobi?</h4>
+<p>Yes. We serve clients across Kenya.</p>
+</div>
+
+<div class="faq-item">
+<h4>How long does delivery take?</h4>
+<p>Delivery depends on the project scope and requirements.</p>
+</div>
+
+<div class="faq-item">
+<h4>Do you offer custom packages?</h4>
+<p>Yes. We tailor our services to fit your needs and budget.</p>
+</div>
+
+</section>
+
+<section class="cta">
+
+<h2>Ready To Start Your Project?</h2>
+
+<p>
+Let's create something amazing together.
+</p>
+
+<br>
+
+<a href="contact.html" class="btn">
+Request a Quote
+</a>
+
+</section>
+
+<footer>
+
+<h2>Robinson Studio</h2>
+
+<p>Bringing Your Vision to Life.</p>
+
+<div class="socials">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-tiktok"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
+</div>
+
+<p>Nairobi, Kenya | Serving Clients Nationwide</p>
+
+<br>
+
+<p>0115765929 | robbinoh123@gmail.com</p>
+
+</footer>
+
+<a href="https://wa.me/254115765929" class="whatsapp">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+<a href="tel:0115765929" class="call">
+<i class="fas fa-phone"></i>
+</a>
+
+<script>
+
+function openMenu(){
+document.getElementById('sidebar').classList.add('active');
+}
+
+function closeMenu(){
+document.getElementById('sidebar').classList.remove('active');
+}
+
+</script>
+
+</body>
+</html>

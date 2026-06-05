@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About Us | Robinson Studio</title>
+
+<meta name="description" content="Learn more about Robinson Studio, a creative media studio specializing in Photography, Graphic Design, Video Editing and Live Streaming services across Kenya.">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--blue:#041F73;
+--light-blue:#6F83C5;
+--yellow:#F4BE00;
+--white:#f5f5f5;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+overflow-x:hidden;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:rgba(4,31,115,.95);
+z-index:1000;
+}
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 8%;
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+color:white;
+}
+
+.logo span{
+color:var(--yellow);
+}
+
+.nav-links{
+display:flex;
+gap:30px;
+}
+
+.nav-links a{
+text-decoration:none;
+color:white;
+font-weight:500;
+}
+
+.nav-links a:hover{
+color:var(--yellow);
+}
+
+.menu-btn{
+display:none;
+font-size:28px;
+color:white;
+cursor:pointer;
+}
+
+.sidebar{
+position:fixed;
+top:0;
+right:-300px;
+width:280px;
+height:100%;
+background:var(--blue);
+padding:80px 30px;
+transition:.4s;
+z-index:2000;
+}
+
+.sidebar.active{
+right:0;
+}
+
+.sidebar a{
+display:block;
+margin:20px 0;
+text-decoration:none;
+color:white;
+}
+
+.close-btn{
+position:absolute;
+right:20px;
+top:20px;
+font-size:28px;
+color:white;
+cursor:pointer;
+}
+
+.hero{
+height:60vh;
+background:url('images/about.png') center/cover;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+}
+
+.hero::before{
+content:'';
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.6);
+}
+
+.hero-content{
+position:relative;
+color:white;
+text-align:center;
+}
+
+.hero-content h1{
+font-size:50px;
+}
+
+section{
+padding:90px 8%;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:50px;
+}
+
+.section-title h2{
+font-size:40px;
+color:var(--blue);
+}
+
+.about-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+}
+
+.about-grid img{
+width:100%;
+border-radius:15px;
+}
+
+.about-text h3{
+font-size:32px;
+color:var(--blue);
+margin-bottom:20px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+text-align:center;
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card i{
+font-size:45px;
+color:var(--yellow);
+margin-bottom:15px;
+}
+
+.card h3{
+color:var(--blue);
+margin-bottom:15px;
+}
+
+.stats{
+background:var(--blue);
+color:white;
+border-radius:20px;
+}
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:30px;
+text-align:center;
+}
+
+.stat h2{
+font-size:50px;
+color:var(--yellow);
+}
+
+.cta{
+background:var(--light-blue);
+color:white;
+text-align:center;
+border-radius:20px;
+}
+
+.btn{
+display:inline-block;
+margin-top:20px;
+padding:14px 30px;
+background:var(--yellow);
+color:var(--blue);
+text-decoration:none;
+font-weight:600;
+border-radius:50px;
+}
+
+.btn:hover{
+background:white;
+}
+
+footer{
+background:#02134a;
+color:white;
+text-align:center;
+padding:50px 8%;
+}
+
+.socials{
+margin:20px 0;
+}
+
+.socials a{
+color:white;
+font-size:22px;
+margin:0 10px;
+}
+
+.whatsapp{
+position:fixed;
+bottom:90px;
+right:20px;
+width:60px;
+height:60px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:28px;
+text-decoration:none;
+}
+
+.call{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+background:var(--blue);
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:24px;
+text-decoration:none;
+}
+
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.fade.show{
+opacity:1;
+transform:translateY(0);
+}
+
+@media(max-width:768px){
+
+.nav-links{
+display:none;
+}
+
+.menu-btn{
+display:block;
+}
+
+.about-grid{
+grid-template-columns:1fr;
+}
+
+.hero-content h1{
+font-size:35px;
+}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="navbar">
+
+<div class="logo">
+Robinson <span>Studio</span>
+</div>
+
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="services.html">Services</a>
+<a href="portfolio.html">Portfolio</a>
+<a href="contact.html">Contact</a>
+</div>
+
+<div class="menu-btn" onclick="openMenu()">
+<i class="fas fa-bars"></i>
+</div>
+
+</div>
+</header>
+
+<div class="sidebar" id="sidebar">
+
+<div class="close-btn" onclick="closeMenu()">
+<i class="fas fa-times"></i>
+</div>
+
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="services.html">Services</a>
+<a href="portfolio.html">Portfolio</a>
+<a href="contact.html">Contact</a>
+
+</div>
+
+<section class="hero">
+
+<div class="hero-content">
+<h1>About Robinson Studio</h1>
+<p>Bringing Your Vision to Life.</p>
+</div>
+
+</section>
+
+<section class="fade">
+
+<div class="section-title">
+<h2>Who We Are</h2>
+</div>
+
+<div class="about-grid">
+
+<img src="images/about.jpg" alt="Robinson Studio">
+
+<div class="about-text">
+
+<h3>Creative Visual Storytellers</h3>
+
+<p>
+Robinson Studio is a professional creative media studio based in Nairobi and serving clients across Kenya. We specialize in Photography, Graphic Design, Video Editing and Live Streaming services for individuals, businesses, organizations and events.
+</p>
+
+<br>
+
+<p>
+Our mission is to transform ideas into compelling visual experiences that communicate, inspire and leave lasting impressions.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="fade">
+
+<div class="section-title">
+<h2>Mission & Vision</h2>
+</div>
+
+<div class="cards">
+
+<div class="card">
+<i class="fas fa-bullseye"></i>
+<h3>Our Mission</h3>
+<p>
+To provide high-quality creative media solutions that help our clients tell their stories and grow their brands.
+</p>
+</div>
+
+<div class="card">
+<i class="fas fa-eye"></i>
+<h3>Our Vision</h3>
+<p>
+To become one of Kenya's most trusted and innovative creative media studios.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="stats fade">
+
+<div class="stats-grid">
+
+<div class="stat">
+<h2 class="counter" data-target="500">0</h2>
+<p>Projects Completed</p>
+</div>
+
+<div class="stat">
+<h2 class="counter" data-target="300">0</h2>
+<p>Happy Clients</p>
+</div>
+
+<div class="stat">
+<h2 class="counter" data-target="5">0</h2>
+<p>Years Experience</p>
+</div>
+
+<div class="stat">
+<h2 class="counter" data-target="50">0</h2>
+<p>Events Streamed</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="fade">
+
+<div class="section-title">
+<h2>Why Choose Us</h2>
+</div>
+
+<div class="cards">
+
+<div class="card">
+<i class="fas fa-camera"></i>
+<h3>Professional Quality</h3>
+<p>Modern equipment and creative expertise.</p>
+</div>
+
+<div class="card">
+<i class="fas fa-clock"></i>
+<h3>Fast Delivery</h3>
+<p>Timely project completion without compromising quality.</p>
+</div>
+
+<div class="card">
+<i class="fas fa-users"></i>
+<h3>Client Focused</h3>
+<p>Your goals and satisfaction remain our priority.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="cta fade">
+
+<h2>Ready To Work With Us?</h2>
+
+<p>
+Let's bring your ideas to life through powerful visual storytelling.
+</p>
+
+<a href="contact.html" class="btn">
+Get a Quote
+</a>
+
+</section>
+
+<footer>
+
+<h2>Robinson Studio</h2>
+
+<p>Bringing Your Vision to Life.</p>
+
+<div class="socials">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-tiktok"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
+</div>
+
+<p>Nairobi, Kenya | Serving Clients Nationwide</p>
+
+<br>
+
+<p>0115765929 | robbinoh123@gmail.com</p>
+
+</footer>
+
+<a href="https://wa.me/254115765929" class="whatsapp">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+<a href="tel:0115765929" class="call">
+<i class="fas fa-phone"></i>
+</a>
+
+<script>
+
+function openMenu(){
+document.getElementById('sidebar').classList.add('active');
+}
+
+function closeMenu(){
+document.getElementById('sidebar').classList.remove('active');
+}
+
+const faders=document.querySelectorAll('.fade');
+
+window.addEventListener('scroll',()=>{
+
+faders.forEach(item=>{
+
+if(item.getBoundingClientRect().top < window.innerHeight-100){
+item.classList.add('show');
+}
+
+});
+
+});
+
+const counters=document.querySelectorAll('.counter');
+
+counters.forEach(counter=>{
+
+const update=()=>{
+
+const target=+counter.getAttribute('data-target');
+const count=+counter.innerText;
+
+const inc=target/100;
+
+if(count<target){
+counter.innerText=Math.ceil(count+inc);
+setTimeout(update,20);
+}else{
+counter.innerText=target;
+}
+
+}
+
+update();
+
+});
+
+</script>
+
+</body>
+</html>
